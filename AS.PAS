@@ -1,36 +1,36 @@
 {   ASPEKTRUM.PAS    ->   ACAD V2.5
 
-    berechnet das HFS-Spektrum eines Elementes in Abhängigkeit
+    berechnet das HFS-Spektrum eines Elementes in AbhÃ¤ngigkeit
     der A- und B-Faktoren bei bekannten Drehimpulseigenwerten
-    ( Ju, Jo, I ) für jeweils den unteren und oberen Zustand.
+    ( Ju, Jo, I ) fÃ¼r jeweils den unteren und oberen Zustand.
 
-    Zusätzlich können max. 6 gerade Isotope eingegeben werden.
-    Die F-, K-, und Energiewerte W für jeweils den unteren bzw.
+    ZusÃ¤tzlich kÃ¶nnen max. 6 gerade Isotope eingegeben werden.
+    Die F-, K-, und Energiewerte W fÃ¼r jeweils den unteren bzw.
     oberen Zustand werden berechnet und ausgegeben.
 
     Die Linien E(Fo,Fu) lassen sich als einzelne Lorentz- bzw.
     Gaussprofile ausgeben, oder auf Wunsch als Summenprofil am
     Bildschirm oder auf dem Drucker anzeigen.
 
-    Für die Druckerausgabe benötigt man bei der HERCULES-Karte das
+    FÃ¼r die Druckerausgabe benÃ¶tigt man bei der HERCULES-Karte das
     Systemprogramm HGC.COM mit den Optionen (HGC FULL HPRINT).
     Hiernach ist der residente Teil des Print-Screen Hardcopy-
-    Programms auf die Grafikseite "umgebogen", und bei drcken der
+    Programms auf die Grafikseite "umgebogen", und bei drÂcken der
     tastenkombination <Shift>+<Prnt-Scr>+<n> erscheint ein Hardcopy
     auf dem jeweils angeschlossenem Drucker.
     ( n = 0, Ausdruck der Grafikseite 0 quer im Format DIN A4 )
 
     Diese Programmversion erzeugt eine Datei SPEKTRUM.CAD aus der
     das Transferprogramm SACAD eine Daten-Austauschdatei SPEKTRUM.DXF
-    für AutoCAD (TM) V2.5 erzeugt. Nachdem man AutoCAD aufgerufen hat,
+    fÃ¼r AutoCAD (TM) V2.5 erzeugt. Nachdem man AutoCAD aufgerufen hat,
     kann der Benutzer mit dem DXFIN-Befehl das berechnete Spektrum
-    laden und nach Belieben editieren... und anschließend ausplotten.
+    laden und nach Belieben editieren... und anschlieÃŸend ausplotten.
 
-    Fr weitere Informationen siehe Datei SPEKTRUM.TXT
+    FÃ¼r weitere Informationen siehe Datei SPEKTRUM.TXT
 
 
-    (C) 1986/1987  Institut für Angewandte Physik
-                   der Universität Bonn
+    (C) 1986/1987  Institut fÃ¼r Angewandte Physik
+                   der UniversitÃ¤t Bonn
 
     Thomas Fabula, Wolfgang Rupprecht
 
@@ -42,14 +42,14 @@ program spektrum;
 { GRAPHIX.SYS angepasst auf Hercules-Grafikkarte (720x348 pixel)     }
 { d.h. zur Installation vorher GRAPHIX.HGH nach GRAPHIX.SYS kopieren.}
 
-{$I typedef.sys}          { System unabhängige Typendefinitionen     }
-{$I graphix.sys}          { System abhängige Definitionen & Routinen }
-{$I kernel.sys}           { System unabhängige Support Routinen      }
+{$I typedef.sys}          { System unabhÃ¤ngige Typendefinitionen     }
+{$I graphix.sys}          { System abhÃ¤ngige Definitionen & Routinen }
+{$I kernel.sys}           { System unabhÃ¤ngige Support Routinen      }
 
 {$I sdeclare.inc}         { Deklarationen (const, type, var)         }
 {$I njsymbol.inc}         { Berechnung der nj-Symbole    (T.Brenner) }
 {$I realin.inc}           { REAL-Zahl Einleseroutine                 }
-{$I asfile.inc}           { Disketten I/O-Routinen fr Parameter     }
+{$I asfile.inc}           { Disketten I/O-Routinen fÃ¼r Parameter     }
                           { inkl. AutoCAD Dateigeneration...         }
 {$I asparam.inc}          { Parameter editieren                      }
 {$I sfunct.inc}           { Programmfunktionen: Drucken,Plotten,etc. }
@@ -114,8 +114,8 @@ begin { lorentz_profil }
     { Sicherheitsabfrage bzgl. DefineWorld... }
     if (ylo>875) then ylo:=875;
     if switchi then DrawPoint(xlo,ylo);
-    xlo:=xlo + deltalo;   { X-Wert erhöhen }
-    ijk:=ijk+1;           { Laufindex für Summe erhöhen }
+    xlo:=xlo + deltalo;   { X-Wert erhÃ¶hen }
+    ijk:=ijk+1;           { Laufindex fÃ¼r Summe erhÃ¶hen }
   until (xlo > x_rechts);
 end { lorentz_profil };
 
@@ -143,15 +143,15 @@ begin { gauss_profil }
     ysum[ijk]:=ysum[ijk]+ylo;  { Aufsummierung des Signals }
     ylo:=untergrund+ylo;
     if switch then DrawPoint(xlo,ylo);
-    xlo:=xlo + deltalo;   { X-Wert erhöhen }
-    ijk:=ijk+1;           { Laufindex für Summe erhöhen }
+    xlo:=xlo + deltalo;   { X-Wert erhÃ¶hen }
+    ijk:=ijk+1;           { Laufindex fÃ¼r Summe erhÃ¶hen }
   until (xlo > x_rechts);
 end { gauss_profil };
 
 {---------------------------------------------}
-{-------  Berechnen der Intensitäten  --------}
+{-------  Berechnen der IntensitÃ¤ten  --------}
 {-------  Intens(ju,jo,fu,fo,ikern)   --------}
-{-------   ber die sechsJ-Symbole    --------}
+{-------   Âber die sechsJ-Symbole    --------}
 {---------------------------------------------}
 
 function intens(var juu,joo,fuu,foo,ikernspin : real) : real;
@@ -167,11 +167,11 @@ end { intens };
 
 
 {----------------------------------------------}
-{-------  Skalierung der Intensit„ten  --------}
+{-------  Skalierung der IntensitÃ¤ten  --------}
 {----------------------------------------------}
 
 procedure skal_intensity;
-{ Skalierung der Intensitäten, suchen von Int(max) }
+{ Skalierung der IntensitÃ¤ten, suchen von Int(max) }
 label ende;
 var   max_intensi,such_intensi : real;
       hfsum                    : real;
@@ -179,7 +179,7 @@ var   max_intensi,such_intensi : real;
       hfsintens                : array [1..40] of real;
 begin { skal_intensity }
   tabs(t);
-  writeln('Skalierung der Intensitäten auf 100% ... !');
+  writeln('Skalierung der IntensitÃ¤ten auf 100% ... !');
   max_intensi:=0.001;
   for n:=0 to maxxu do
   begin
@@ -187,7 +187,7 @@ begin { skal_intensity }
     begin
       if ( ( fu[n]-fo[m] = 0) or (abs( fu[n] - fo[m]) = 1) ) then
       begin
-        {  maximale Linien-Intensit„ten  }
+        {  maximale Linien-IntensitÃ¤ten  }
         such_intensi:=intens(ju,jo,fu[n],fo[m],ikern)*100;
         if (such_intensi > max_intensi) then max_intensi := such_intensi;
       end { if };
@@ -195,7 +195,7 @@ begin { skal_intensity }
   end { for };
   skal_intensi := 100 / max_intensi;
 
-  { Berechnung der Intensitäten -> Skalierungsfaktor: gint }
+  { Berechnung der IntensitÃ¤ten -> Skalierungsfaktor: gint }
   anz:=0;
   for n:=0 to maxxu do
   begin
@@ -211,10 +211,10 @@ begin { skal_intensity }
     end { for };
   end { for };
 
-  { Summe der Intensitäten = Häufigkeit des ungeraden Isotops: hf }
+  { Summe der IntensitÃ¤ten = HÃ¤ufigkeit des ungeraden Isotops: hf }
   hfsum:=0;
   for i:=1 to anz do  hfsum:=hfsum + hfsintens[i];
-  { Skalierungsfaktor fr gerade Isotope }
+  { Skalierungsfaktor fÂr gerade Isotope }
   gint:=hfsum / hf;
 
 end { skal_intensity };
@@ -238,7 +238,7 @@ begin { berechne_f }
    begin
      writeln('Spektrumdaten werden gespeichert in der Datei : ',datname);
      assign(filvar,datname);
-     rewrite(filvar);             { gleichnamige Datei wird berschrieben }
+     rewrite(filvar);             { gleichnamige Datei wird Ã¼berschrieben }
      {  Parameter  }
      writeln(filvar,'Hfs-Spektrumdaten:');
      writeln(filvar,'==================');
@@ -270,7 +270,7 @@ begin { berechne_f }
      writeln(filvar,'--------');
    end;
   tabs(t);
-  { Berechnung für den unteren Zustand }
+  { Berechnung fÃ¼r den unteren Zustand }
   j:=ju;
   if j>=ikern then max:=ikern
   else max:=j;
@@ -284,7 +284,7 @@ begin { berechne_f }
   end { for };
   tabs(t);
   if save then writeln(filvar);
-  { Berechnung fr den oberen Zustand }
+  { Berechnung fÂr den oberen Zustand }
   j:=jo;
   if j>=ikern then max:=ikern
   else max:=j;
@@ -314,7 +314,7 @@ begin { berechne_k }
       writeln(filvar,'-----------');
     end;
   tabs(t);
-  { Berechnung für den unteren Zustand }
+  { Berechnung fÃ¼r den unteren Zustand }
   for n:=0 to maxxu do
   begin
     j:=ju;
@@ -331,7 +331,7 @@ begin { berechne_k }
      writeln(filvar,'-----------');
      writeln(filvar);
    end;
-  { Berechnung für den oberen Zustand }
+  { Berechnung fÃ¼r den oberen Zustand }
   for n:=0 to maxxo do
   begin
     j:=jo;
@@ -375,7 +375,7 @@ begin { berechne_w }
       writeln(filvar,'W(F)-Werte [MHz]:');
       writeln(filvar,'-----------------');
     end;
-  { Berechnung für den unteren Zustand  }
+  { Berechnung fÃ¼r den unteren Zustand  }
   for m:=0 to maxxu do
   begin
     f:=fu[m];
@@ -386,7 +386,7 @@ begin { berechne_w }
   end { for };
   tabs(t);
   if save then writeln(filvar);
-  { Berechnung für den oberen Zustand  }
+  { Berechnung fÃ¼r den oberen Zustand  }
   for m:=0 to maxxo do
   begin
     f:=fo[m];
@@ -401,7 +401,7 @@ end { berechne_w };
 {                  unter Beachtung der Auswahlregeln:                  }
 {                                                                      }
 {                       delta(F) = 0, +1, -1     und                   }
-{                  šbergang F = 0 nach F = 0  verboten                 }
+{                  Å¡bergang F = 0 nach F = 0  verboten                 }
 {                                                                      }
 {                       Wo(n) - Wu(m)  ==>  E(n,m)                     }
 {                Energiewerte W,E in [MHz] - Einheiten                 }
@@ -431,7 +431,7 @@ begin { energien_zuordnung }
         linien_anzahl:=linien_anzahl+1;
         if test then
           write('E(',fo[m]:3:1,',',fu[n]:3:1,') = ',energie[m,n]:15:6);
-        {  Linien-Intensit„ten  }
+        {  Linien-IntensitÃ¤ten  }
         intensi:=skal_intensi*intens(ju,jo,fu[n],fo[m],ikern)*100;
         writeln('   (Int : ',intensi:6:2,'%)');
         {  Aussortieren von Emax und Emin  }
@@ -471,7 +471,7 @@ end { for };
       writeln('Hfs-Aufspaltung   = ',hfsaufsp:15:8,' [GHz]');
       writeln('Anzahl der Linien : ',linien_anzahl:2);
       tabs(ft);
-      write('Bitte <RETURN> drücken : ');
+      write('Bitte <RETURN> drÃ¼cken : ');
       readln(ch);
     end { if };
 end { energien_zuordnung };
@@ -521,7 +521,7 @@ begin { summation }
   repeat
     { Aufsummiertes Signal einzeichnen        }
     ysumme:=untergrund+(ysum[kl]);
-    { Kennzeichnen der Punkte die außerhalb liegen... }
+    { Kennzeichnen der Punkte die auÃŸerhalb liegen... }
     if (ysumme>850) then
       begin
         ysumme:=875;
@@ -536,8 +536,8 @@ begin { summation }
     if (yfirst  > 850) then yfirst:=850;
     if (ysecond > 850) then ysecond:=850;
     DrawLine(xlo,yfirst,xlo+deltalo,ysecond);
-    xlo:=xlo + deltalo;   { X-Wert erhöhen }
-    kl:=kl+1;             { Laufindex für Summe erhöhen }
+    xlo:=xlo + deltalo;   { X-Wert erhÃ¶hen }
+    kl:=kl+1;             { Laufindex fÃ¼r Summe erhÃ¶hen }
   until ( (xlo > x_rechts) or (kl>=aufloesung) );
   drucken;
   gotoxy(62,24); write('        <<RETURN>>');
@@ -589,7 +589,7 @@ begin { begin_grafik }
   x_max:=energmax;
   InitGraphic;                            {init the system and screen}
   SelectScreen(1);
-  ClearScreen;                       { Wertebereiche fr Grafik:     }
+  ClearScreen;                       { Wertebereiche fÃ¼r Grafik:     }
   x_links:=x_min-offset;             { 0      <= Y-Achse <= 1000     }
   x_rechts:=x_max+offset;            { x_links < X-Wert  <  x_rechts }
   DefineWorld(1,x_links,0,x_rechts,1000); {define a world for drawing}
@@ -600,7 +600,7 @@ begin { begin_grafik }
   DrawLine(x_links,200,x_rechts,200);      {  doppelte Energieachse  }
   DrawLine(x_links,205,x_rechts,205);      {  [MHz] zeichnen         }
 
-  DrawLine(x_links,870,x_rechts,870);      { Fenster für Fu/Fo-Werte }
+  DrawLine(x_links,870,x_rechts,870);      { Fenster fÃ¼r Fu/Fo-Werte }
   DrawLine(x_links,850,x_rechts,850);
   y_axis;                                  { Y-Achse einzeichnen     }
 
@@ -609,7 +609,7 @@ begin { begin_grafik }
   DrawLine(swp,200,swp,870);       {  Hfs-Linienschwerpunkt zeichnen }
 
   gotoxy(3,2); write(element);                {  Elementbezeichnung  }
-  writeln(',  Übergang : ',vonzustand,' -> ',nachzustand);
+  writeln(',  Ãœbergang : ',vonzustand,' -> ',nachzustand);
   gotoxy(55,2); write(' SPEKTRUM ');
   gotoxy(55,3); write('Simulation');
   gotoxy(65,21); write('Energie [MHz]');
@@ -634,13 +634,13 @@ begin { begin_grafik }
 end { begin_grafik };
 
 {---------------------------------------}
-{-------   Grafik abschließen   --------}
+{-------   Grafik abschlieÃŸen   --------}
 {---------------------------------------}
 procedure end_grafik;
 var art : char;
     zeige : boolean;
 begin { end_grafik }
-  { Löschen der Abfrage }
+  { LÃ¶schen der Abfrage }
   gotoxy(3,22);  write('                                     ');
   gotoxy(3,23);  write('                                     ');
   gotoxy(3,22);  write('Au = ',au:11:6);
@@ -671,7 +671,7 @@ begin { end_grafik }
  end { end_grafik };
 
 {----------------------------------------------------------------------}
-{ Zeichnet die gefundenen HFS-Übergangsfrequenzen auf den Bildschirm.  }
+{ Zeichnet die gefundenen HFS-Ãœbergangsfrequenzen auf den Bildschirm.  }
 {----------------------------------------------------------------------}
 
 procedure zeige_Spektrum_CRT;
@@ -697,9 +697,9 @@ begin { zeige_spektrum_crt }
          begin
            if ( ( fu[n]=0) and (fo[m]=0) ) then goto ende;
            profanz:=profanz+1;
-      {  HFS-šbergang einzeichnen:    }
+      {  HFS-Å¡bergang einzeichnen:    }
            x:=energie[m,n]+swp;
-      {  Linien-Intensit„ten  }
+      {  Linien-IntensitÃ¤ten  }
            intensity:=intens(ju,jo,fu[n],fo[m],ikern)*skal_intensi;
            yint:=intensity*100;
            intensity:=intensity*grafik_skal;
@@ -737,7 +737,7 @@ begin { main }
   test:=TRUE;
   save:=TRUE;
   cad:=FALSE;
-  ladefacarr;  { Fakultäten-Array belegen }
+  ladefacarr;  { FakultÃ¤ten-Array belegen }
   parameter_load;
   profil_parameter_load;
   untergrund:=untergrund+205;
@@ -764,4 +764,3 @@ begin { main }
 end { main }.
 
 {====================   P r o g r a m m - E n d e    ==================}
-
