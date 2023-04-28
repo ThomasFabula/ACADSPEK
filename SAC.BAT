@@ -11,7 +11,6 @@ copy spektrum.dxf c:\cad
 cd c:\cad
 rem Autocad aufrufen
 acad spektrum
-rem zurÅck ins Spektrum Directory
+rem zur√ºck ins Spektrum Directory
 cd c:\turbo\graphix
 echo=on
-
