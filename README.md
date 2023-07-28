@@ -9,4 +9,3 @@ This program version generates a file SPEKTRUM.CAD from which the transfer progr
 ## Further information
 - https://en.wikipedia.org/wiki/AutoCAD_version_history
 - https://en.wikipedia.org/wiki/AutoCAD
-- 
