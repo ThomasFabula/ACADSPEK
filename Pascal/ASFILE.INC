@@ -1,8 +1,8 @@
 {  ASFILE.INC
 
-   lieﬂt die Parameter von Disk und speichert
+   lie√üt die Parameter von Disk und speichert
    sie wieder ab.
-   Erzeugt eine Datei f¸r AutoCAD : SPEKTRUM.CAD,
+   Erzeugt eine Datei f√ºr AutoCAD : SPEKTRUM.CAD,
    die vom Transferprogramm SACAD bearbeitet werden
    kann.
 
@@ -70,7 +70,7 @@ procedure parameter_save;
 begin
   clrscr;
   gotoxy(1,3);
-  write('LetztgÅltiger Parametersatz wird gespeichert in SPEKTRUM.PAR');
+  write('Letztg¬Åltiger Parametersatz wird gespeichert in SPEKTRUM.PAR');
   gotoxy(1,9); write('                                                ');
   gotoxy(1,9);
   write('Kommentar zum Datensatz:');
@@ -126,7 +126,7 @@ end;
 procedure profil_parameter_save;
 begin
   gotoxy(1,4);
-  write('Letztg¸ltige Profilparameter werden gespeichert in SPROFIL.PAR');
+  write('Letztg√ºltige Profilparameter werden gespeichert in SPROFIL.PAR');
   untergrund:=untergrund-205;
   profildatei:='SPROFIL.PAR';
   assign(filvar,profildatei);
@@ -139,7 +139,7 @@ begin
   if cad then
    begin
      gotoxy(1,5);
-     write('Plotkoordinaten f¸r AutoCAD V2.5 ');
+     write('Plotkoordinaten f√ºr AutoCAD V2.5 ');
      write('werden gespeichert in SPEKTRUM.CAD');
    end;
   gotoxy(1,14);
