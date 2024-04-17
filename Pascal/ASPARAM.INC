@@ -1,10 +1,10 @@
 {  ASPARAM.INC
 
-   Parameter einlesen f¸r das SPEKTRUM-Programm
-   A-, B-Faktoren    >  f¸r jeweils den
+   Parameter einlesen f√ºr das SPEKTRUM-Programm
+   A-, B-Faktoren    >  f√ºr jeweils den
    J-Drehimpulse     >  unteren/oberen Zustand
    I-Kernspin
-   und f¸r die Parameter der geradzahligen Isotope
+   und f√ºr die Parameter der geradzahligen Isotope
 }
 
 var  unt       : real;
@@ -49,9 +49,9 @@ begin
      then element:=strx
      else element:=defaultelement;
     gotoxy(1,9);
-    writeln('Welcher ‹bergang soll betrachtet werden ?');
+    writeln('Welcher √úbergang soll betrachtet werden ?');
     gotoxy(1,10);
-    write(' ‹bergang von Zustand           : ',defaultvon);
+    write(' √úbergang von Zustand           : ',defaultvon);
     gotoxy(35,10);
     readln(strx1);
     gotoxy(1,11);
@@ -117,7 +117,7 @@ begin
       if xikern<>0 then ikern:=xikern;
 
     { Konstante Daten des ungeraden Isotops }
-      gotoxy(1,zei+5); write('HÑufigk. = ',hf:9:2 ,' [%]');
+      gotoxy(1,zei+5); write('H‚Äûufigk. = ',hf:9:2 ,' [%]');
       gotoxy(1,zei+6); write('Schwpkt. = ',swp:9:4,' [MHz]');
 
     { Daten der geradzahligen Isotope }
@@ -152,11 +152,11 @@ begin
       if xfwhm<>0 then FWHM:=xfwhm;
 
       gotoxy(43,zei+10); writeln(aufloesung:4);
-      xaufl:=realin(30,zei+10,'Auflîsung  = ',4);
+      xaufl:=realin(30,zei+10,'Aufl‚Äùsung  = ',4);
       if xaufl<>0 then aufloesung:=trunc(xaufl);
 
       gotoxy(1,zei+12);
-      write('Koordinatendatei SPEKTRUM.CAD f¸r AutoCAD generieren (J/N) ? ');
+      write('Koordinatendatei SPEKTRUM.CAD f√ºr AutoCAD generieren (J/N) ? ');
       readln(xxantwort); xxantwort:=upcase(xxantwort);
       if (xxantwort='J') then cad:=TRUE;
 
@@ -175,7 +175,7 @@ begin
         gotoxy(1,21);
         for l:=1 to 80 do write(#205);
         gotoxy(1,20);
-        writeln('ACHTUNG : Mind. ein Drehimpuls von Ju,Jo  u n d  I muﬂ ungleich Null sein !');
+        writeln('ACHTUNG : Mind. ein Drehimpuls von Ju,Jo  u n d  I mu√ü ungleich Null sein !');
         write(#7,#7,#7);
         lowvideo;
         for t:=1 to 10000 do;
